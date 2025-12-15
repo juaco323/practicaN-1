@@ -66,8 +66,8 @@
             "Sala asignada": "=Sala {{ $json[\"Sala asignada\"] }}",
             "Estado": "=Confirmada",
             "row_number": 0,
-            "horaInicio": "={{ $json.horaInicio }}",
-            "horaTermino": "={{ $json.horaTermino }}",
+            "horaInicio": "={{ $json.inicioStr }}",
+            "horaTermino": "={{ $json.finStr }}",
             "Fecha": "={{ $json.Fecha }}",
             "Correo": "={{ $json.Correo }}",
             "Nombre": "={{ $json.Nombre }}",
@@ -655,7 +655,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "7a6494ef-8f84-4267-a0e7-a830c6525624",
+  "versionId": "1818f63f-7559-4149-bf08-1e26e7ca2aa1",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "49917c8c6b8ffea2c96652a81fbef2ef2cff23a6be45110ebde2253ccd3b891a"

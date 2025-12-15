@@ -6,8 +6,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -432,
-        432
+        -384,
+        512
       ],
       "id": "b8e61c9f-47dd-48fa-a775-b20643f06909",
       "name": "Merge"
@@ -165,8 +165,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -896,
-        272
+        -832,
+        448
       ],
       "id": "473cbfee-8e54-44da-b15b-cf1cbab41805",
       "name": "guardarRegistro",
@@ -198,8 +198,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -720,
-        272
+        -608,
+        448
       ],
       "id": "db1f92b3-c5b6-4cbd-aa13-ef7135de55c8",
       "name": "leerSalas",
@@ -217,8 +217,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -256,
-        432
+        -160,
+        512
       ],
       "id": "9b4fd2e2-acd2-4166-b596-c7372852654d",
       "name": "filtrarCapacidad"
@@ -230,8 +230,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -96,
-        432
+        64,
+        512
       ],
       "id": "1b49fdec-aff9-443b-ab66-727c0c0ecd0f",
       "name": "Loop Over Items"
@@ -252,8 +252,8 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        128,
-        464
+        288,
+        416
       ],
       "id": "5ed4d763-d31d-45fd-8f24-35638cf91dd1",
       "name": "Get many events",
@@ -272,8 +272,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        416,
-        560
+        736,
+        448
       ],
       "id": "ebb85f76-7adb-4d2d-a1cc-336f2eabef6f",
       "name": "Code in JavaScript"
@@ -306,8 +306,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        576,
-        608
+        960,
+        512
       ],
       "id": "172ec603-4969-4743-b50a-2604f73f523a",
       "name": "If"
@@ -317,8 +317,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        288,
-        560
+        512,
+        448
       ],
       "id": "073bc653-0d63-4688-a0aa-b7c068c4ced3",
       "name": "Merge1"
@@ -328,8 +328,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        960,
-        528
+        1408,
+        512
       ],
       "id": "90f29ded-c9a4-402d-b6a0-4f7e3eb3437f",
       "name": "Merge2"
@@ -344,8 +344,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        1376,
-        528
+        1856,
+        512
       ],
       "id": "fc102213-065e-4c1d-a869-33d4a83da216",
       "name": "Send a message",
@@ -520,8 +520,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1584,
-        528
+        2080,
+        512
       ],
       "id": "1829d8b0-65bf-4b39-9393-1c0850a8ed54",
       "name": "Update row in sheet",
@@ -547,7 +547,7 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        224,
+        512,
         32
       ],
       "id": "65f82e1e-42ff-4085-af20-0989dfc87309",
@@ -588,8 +588,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        640,
-        112
+        960,
+        64
       ],
       "id": "7b849266-bf6e-42ec-b2ac-b0983f02e5e3",
       "name": "If1",
@@ -605,8 +605,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        1120,
-        96
+        1408,
+        64
       ],
       "id": "acff5a09-9174-45c1-ba34-a586e574c537",
       "name": "Send a message1",
@@ -627,8 +627,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        464,
-        112
+        736,
+        64
       ],
       "id": "089e6511-1b51-42cb-a022-253ffdd61b1b",
       "name": "Merge3"
@@ -641,7 +641,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        240,
+        512,
         224
       ],
       "id": "eb326c7b-ab20-425c-98b5-09c6e1fc7b2c",
@@ -655,8 +655,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        128,
-        640
+        288,
+        608
       ],
       "id": "6f506387-e680-4e82-ae15-824c163963cc",
       "name": "SET"
@@ -669,8 +669,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        784,
-        576
+        1184,
+        608
       ],
       "id": "b1480834-a917-45a4-846d-28337bcbc74f",
       "name": "SET2"
@@ -682,8 +682,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        16,
-        80
+        288,
+        64
       ],
       "id": "f65be48e-b3f6-4256-b6f4-115d2b423cc4",
       "name": "GenerarAlternativas",
@@ -696,8 +696,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        864,
-        96
+        1184,
+        64
       ],
       "id": "8fd6b7b0-ffe2-49c6-b868-3da11ab73584",
       "name": "HTML"
@@ -717,8 +717,7 @@
           "attendees": [
             "={{ $json.correo }}"
           ],
-          "description": "=ID de la reserva: [{{ $json.ReservaID }}]   Su sala fue confirmada exitosamente. ¿Cuando? {{ $json.fechaLarga }} de {{ $json.inicioStr }} a {{ $json.finStr }} ¿Donde? {{ $json.room }} {{ $json.torre }} Capacidad total: {{ $json.participantes }}  ID de la reserva: [{{$json.ReservaID}}]",
-          "summary": "={{ $json.summary }} || {{ $json.room }} || Reservada "
+          "summary": "={{ $json.summary }} || {{$json.nombre}} || {{ $json.room }} || Reservada "
         },
         "remindersUi": {
           "remindersValues": [
@@ -732,8 +731,8 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.3,
       "position": [
-        784,
-        432
+        1184,
+        416
       ],
       "id": "dd270d19-c0ec-475f-9b7b-b4156efce97c",
       "name": "Create an event",
@@ -747,26 +746,26 @@
     },
     {
       "parameters": {
-        "jsCode": "// === CONFIG (usa URL pública y /webhook, no /webhook-test) ===\nconst CANCEL_WEBHOOK_URL = 'https://pseudoangelic-tonya-simultaneous.ngrok-free.dev/webhook/cancelar-reserva';\n\nconst TZ = 'America/Santiago';\n\n// === INPUTS DESDE Merge/SET ===\nconst d = items[0].json;\nconst e  = items[1].json;\nconst correo       = d.correo;\nconst room         = d.room;\nconst fechaStr     = d.fechaStr;\nconst inicioStr    = d.inicioStr;\nconst finStr       = d.finStr;\nconst summary      = d.summary;\nconst participantes= d.participantes;\nconst nombre       = d.nombre;\nconst ReservaID    = d.ReservaID;   \nconst calendarID = d.calendarId;\nconst eventID = e.id;\n// <- en tu panel se llama así\n\nfunction enc(v){ return encodeURIComponent(v == null ? '' : String(v)); }\n\n// Enlace de cancelación (GET) — usa tus campos reales\nconst cancelLink =\n  `${CANCEL_WEBHOOK_URL}`\n  + `?accion=cancelar`\n  + `&reservationId=${enc(ReservaID)}`\n  + `&eventId=${enc(eventID)}`\n  + `&calendarId=${enc(calendarID)}`\n  + `&email=${enc(correo)}`\n  + `&room=${enc(room)}`\n  + `&fecha=${enc(fechaStr)}`\n  + `&inicio=${enc(inicioStr)}`\n  + `&fin=${enc(finStr)}`;\n\n\n// Asunto\nconst subject = `✅ Reserva confirmada — ${room || '-'} — ${ReservaID || ''}`;\n\n// === HTML con botón BULLETPROOF (tabla) ===\nconst htmlBody = `\n<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333333; max-width: 600px; margin: auto; border: 1px solid #dddddd; border-radius: 8px; overflow: hidden;\">\n  <div style=\"background-color: #4CAF50; color: #ffffff; padding: 20px; text-align: center;\">\n    <h1 style=\"margin: 0; font-size: 24px;\">✅ Reserva Confirmada Exitosamente</h1>\n  </div>\n\n  <div style=\"padding: 20px;\">\n    <p>Estimado(a) <strong>${nombre || ''}</strong>,</p>\n    <p>¡Tu reserva fue registrada y agregada al calendario!</p>\n\n    <h2 style=\"color: #4CAF50; font-size: 18px; border-bottom: 1px solid #eeeeee; padding-bottom: 5px;\">Detalles de la Reserva</h2>\n\n    <table width=\"100%\" cellspacing=\"0\" cellpadding=\"8\" border=\"0\" style=\"border-collapse: collapse;\">\n      <tbody>\n        <tr style=\"background-color: #f4f4f4;\">\n          <td width=\"30%\" style=\"font-weight: bold; border: 1px solid #dddddd;\">Sala Reservada</td>\n          <td width=\"70%\" style=\"border: 1px solid #dddddd;\"><strong>${room || '-'}</strong></td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Fecha</td>\n          <td style=\"border: 1px solid #dddddd;\">${fechaStr || '-'}</td>\n        </tr>\n        <tr style=\"background-color: #f4f4f4;\">\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Hora de Inicio</td>\n          <td style=\"border: 1px solid #dddddd;\">${inicioStr || '-'}</td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Hora de Fin</td>\n          <td style=\"border: 1px solid #dddddd;\">${finStr || '-'}</td>\n        </tr>\n        <tr style=\"background-color: #f4f4f4;\">\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Motivo</td>\n          <td style=\"border: 1px solid #dddddd;\">${summary || '-'}</td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Participantes</td>\n          <td style=\"border: 1px solid #dddddd;\">${participantes || '-'}</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <p style=\"margin-top: 12px; font-size: 12px; color: #666666;\">\n      <strong>Referencia:</strong> ID de Reserva <b>${ReservaID || '-'}</b>\n    </p>\n\n    <!-- Botón BULLETPROOF (tabla) -->\n    <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\" style=\"margin:16px auto;\">\n      <tr>\n        <td align=\"center\" bgcolor=\"#e53935\" style=\"\n          border-radius:6px;\n          mso-padding-alt:12px 18px;\n        \">\n          <a href=\"${cancelLink}\"\n             style=\"\n               display:block;\n               padding:12px 18px;\n               font-weight:bold;\n               text-decoration:none;\n               color:#ffffff;\n               font-family: Arial, sans-serif;\n             \">\n            ❌ Cancelar reserva\n          </a>\n        </td>\n      </tr>\n    </table>\n\n    <p style=\"font-size:12px; color:#666; margin-top:10px; text-align:center;\">\n      ¿Estás viendo esto desde un correo? Si el botón no funciona, usa este enlace:<br/>\n      <a href=\"${cancelLink}\" style=\"color:#e53935; font-weight:bold; word-break:break-all;\">Cancelar mi reserva</a>\n    </p>\n  </div>\n\n  <div style=\"background-color: #f4f4f4; padding: 15px; text-align: center; border-top: 1px solid #dddddd;\">\n    <p style=\"margin: 0; font-size: 12px; color: #666666;\">Sistema de Reservas</p>\n  </div>\n</div>\n`;\n\nreturn [{\n  json: {\n    to: correo || d.emailDestino,\n    subject,\n    htmlBody,\n    ReservaID,\n    room,\n    nombre,\n    participantes,\n    summary,\n    inicioStr,\n    finStr,\n    fechaStr,\n    correo,\n    TZ,\n    calendarID,\n    eventID\n  }\n}];\n"
+        "jsCode": "// === CONFIG (usa URL pública y /webhook, no /webhook-test) ===\nconst CANCEL_WEBHOOK_URL = 'https://pseudoangelic-tonya-simultaneous.ngrok-free.dev/webhook/cancelar-reserva';\n\nconst TZ = 'America/Santiago';\n\n// === INPUTS DESDE Merge/SET ===\nconst d = items[0].json;\nconst e  = items[1].json;\nconst correo       = d.correo;\nconst room         = d.room;\nconst fechaRaw     = d.fechaRaw;\nconst inicioStr    = d.inicioStr;\nconst finStr       = d.finStr;\nconst summary      = d.summary;\nconst participantes= d.participantes;\nconst nombre       = d.nombre;\nconst ReservaID    = d.ReservaID;   \nconst calendarID = d.calendarId;\nconst area = d.area;\nconst eventID = e.id;\n// <- en tu panel se llama así\n\nfunction enc(v){ return encodeURIComponent(v == null ? '' : String(v)); }\n\n// Enlace de cancelación (GET) — usa tus campos reales\nconst cancelLink =\n  `${CANCEL_WEBHOOK_URL}`\n  + `?accion=cancelar`\n  + `&reservationId=${enc(ReservaID)}`\n  + `&eventId=${enc(eventID)}`\n  + `&calendarId=${enc(calendarID)}`\n  + `&email=${enc(correo)}`\n  + `&room=${enc(room)}`\n  + `&fecha=${enc(fechaRaw)}`\n  + `&inicio=${enc(inicioStr)}`\n  + `&fin=${enc(finStr)}`\n  + `&area=${enc(area)}`\n\n\n// Asunto\nconst subject = `✅ Reserva confirmada — ${room || '-'}`;\n\n// === HTML con botón BULLETPROOF (tabla) ===\nconst htmlBody = `\n<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333333; max-width: 600px; margin: auto; border: 1px solid #dddddd; border-radius: 8px; overflow: hidden;\">\n  <div style=\"background-color: #4CAF50; color: #ffffff; padding: 20px; text-align: center;\">\n    <h1 style=\"margin: 0; font-size: 24px;\">✅ Reserva Confirmada Exitosamente</h1>\n  </div>\n\n  <div style=\"padding: 20px;\">\n    <p>Estimado(a) <strong>${nombre || ''}</strong>,</p>\n    <p>¡Tu reserva fue registrada y agregada al calendario!</p>\n\n    <h2 style=\"color: #4CAF50; font-size: 18px; border-bottom: 1px solid #eeeeee; padding-bottom: 5px;\">Detalles de la Reserva</h2>\n\n    <table width=\"100%\" cellspacing=\"0\" cellpadding=\"8\" border=\"0\" style=\"border-collapse: collapse;\">\n      <tbody>\n        <tr style=\"background-color: #f4f4f4;\">\n          <td width=\"30%\" style=\"font-weight: bold; border: 1px solid #dddddd;\">Sala Reservada</td>\n          <td width=\"70%\" style=\"border: 1px solid #dddddd;\"><strong>${room || '-'}</strong></td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Fecha</td>\n          <td style=\"border: 1px solid #dddddd;\">${fechaRaw || '-'}</td>\n        </tr>\n        <tr style=\"background-color: #f4f4f4;\">\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Hora de Inicio</td>\n          <td style=\"border: 1px solid #dddddd;\">${inicioStr || '-'}</td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Hora de Fin</td>\n          <td style=\"border: 1px solid #dddddd;\">${finStr || '-'}</td>\n        </tr>\n        <tr style=\"background-color: #f4f4f4;\">\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Área/Departamento</td>\n          <td style=\"border: 1px solid #dddddd;\">${area || '-'}</td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: bold; border: 1px solid #dddddd;\">Participantes</td>\n          <td style=\"border: 1px solid #dddddd;\">${participantes || '-'}</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <p style=\"margin-top: 12px; font-size: 12px; color: #666666;\">\n      <strong>Referencia:</strong> ID de Reserva <b>${ReservaID || '-'}</b>\n    </p>\n\n    <!-- Botón BULLETPROOF (tabla) -->\n    <table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" align=\"center\" style=\"margin:16px auto;\">\n      <tr>\n        <td align=\"center\" bgcolor=\"#e53935\" style=\"\n          border-radius:6px;\n          mso-padding-alt:12px 18px;\n        \">\n          <a href=\"${cancelLink}\"\n             style=\"\n               display:block;\n               padding:12px 18px;\n               font-weight:bold;\n               text-decoration:none;\n               color:#ffffff;\n               font-family: Arial, sans-serif;\n             \">\n            ❌ Cancelar reserva\n          </a>\n        </td>\n      </tr>\n    </table>\n\n    <p style=\"font-size:12px; color:#666; margin-top:10px; text-align:center;\">\n      ¿Estás viendo esto desde un correo? Si el botón no funciona, usa este enlace:<br/>\n      <a href=\"${cancelLink}\" style=\"color:#e53935; font-weight:bold; word-break:break-all;\">Cancelar mi reserva</a>\n    </p>\n  </div>\n\n  <div style=\"background-color: #f4f4f4; padding: 15px; text-align: center; border-top: 1px solid #dddddd;\">\n    <p style=\"margin: 0; font-size: 12px; color: #666666;\">Sistema de Reservas</p>\n  </div>\n</div>\n`;\n\nreturn [{\n  json: {\n    to: correo || d.emailDestino,\n    subject,\n    htmlBody,\n    ReservaID,\n    room,\n    nombre,\n    participantes,\n    area,\n    inicioStr,\n    finStr,\n    fechaRaw,\n    correo,\n    TZ,\n    calendarID,\n    eventID\n  }\n}];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1168,
-        528
+        1632,
+        512
       ],
       "id": "baa58b3a-daff-4cee-a5f7-1b1b5633456e",
       "name": "Code in JavaScript1"
     },
     {
       "parameters": {
-        "jsCode": "// ===============================\n// n8n Code node (Webhook-ready)\n// - Lee datos desde $json.body / $json.query / $json\n// - Sanitiza + valida\n// - Valida duración mínima y máxima\n// - Genera startIso/endIso (con -03:00)\n// - Genera fechaYMD (para guardar fecha sí o sí)\n// - Genera ReservaID\n// ===============================\n\n// -------- CONFIGURACIÓN --------\nconst DURACION_MIN_MIN = 30;   // 30 minutos\nconst DURACION_MAX_MIN = 120;  // 2 horas\nconst TZ_OFFSET = \"-03:00\";\n// --------------------------------\n\n// --- Helpers de sanitización ---\nfunction sanitizeText(str = \"\") {\n  if (!str) return \"\";\n  str = String(str).replace(/<[^>]*>/g, \"\");\n  return str.replace(/\\s+/g, \" \").trim();\n}\n\nfunction sanitizeNombre(str = \"\") {\n  if (!str) return \"\";\n  str = String(str).replace(/<[^>]*>/g, \"\");\n  str = str.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s]/g, \"\");\n  return str.replace(/\\s+/g, \" \").trim();\n}\n\n// Fecha: DD/MM/YYYY | DD-MM-YYYY | YYYY-MM-DD | Excel\n// Importante: YYYY-MM-DD se parsea manual para evitar corrimiento por UTC\nfunction parseFecha(fechaRaw) {\n  if (!fechaRaw) return null;\n\n  // Excel serial number\n  if (typeof fechaRaw === \"number\") {\n    const epoch = (fechaRaw - 25569) * 86400 * 1000;\n    const d = new Date(epoch);\n    // Normaliza a \"solo fecha\" local\n    return new Date(d.getFullYear(), d.getMonth(), d.getDate());\n  }\n\n  const s = String(fechaRaw).trim();\n\n  // YYYY-MM-DD (solo fecha) -> crear en local (NO UTC)\n  let m = s.match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);\n  if (m) {\n    const [, yyyy, mm, dd] = m;\n    const d = new Date(Number(yyyy), Number(mm) - 1, Number(dd));\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // DD/MM/YYYY o DD-MM-YYYY\n  m = s.match(/^(\\d{1,2})[\\/-](\\d{1,2})[\\/-](\\d{4})$/);\n  if (m) {\n    const [, dd, mm, yyyy] = m;\n    const d = new Date(Number(yyyy), Number(mm) - 1, Number(dd));\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // Fallback: si viene con hora (ej: 2025-12-13 10:00)\n  const d = new Date(s);\n  return isNaN(d.getTime()) ? null : d;\n}\n\n// Hora: 08:30 | 10:40 a.m. | 14:20\nfunction parseHora(raw) {\n  if (!raw) return \"\";\n  let s = String(raw).toLowerCase().trim();\n\n  const m = s.match(/^(\\d{1,2}):(\\d{2})(?::\\d{2})?\\s*(a\\.m\\.|p\\.m\\.)?$/);\n  if (!m) return \"\";\n\n  let h = Number(m[1]);\n  const min = m[2];\n  const suf = m[3];\n\n  if (suf) {\n    if (suf.includes(\"p\") && h < 12) h += 12;\n    if (suf.includes(\"a\") && h === 12) h = 0;\n  }\n\n  return `${String(h).padStart(2, \"0\")}:${min}`;\n}\n\n// ===============================\n// Inicio lógica principal\n// ===============================\n\n// Webhook body / query / root\nconst root = $json;\nconst r =\n  (root.body && typeof root.body === \"object\") ? root.body :\n  (root.query && typeof root.query === \"object\") ? root.query :\n  root;\n\nconst errores = [];\n\n// -------- Lectura de campos --------\nconst rawNombre = r.nombre || r[\"Nombre\"] || \"\";\nconst rawCorreo = r.email || r[\"Correo\"] || r[\"Correo electrónico\"] || \"\";\nconst rawArea   = r.area || r[\"Área\"] || r[\"Area\"] || \"\";\nconst rawFecha  = r.fecha || r[\"Fecha\"] || \"\";\nconst rawInicio = r.horaInicio || r[\"Hora inicio\"] || \"\";\nconst rawFin    = r.horaTermino || r[\"Hora fin\"] || \"\";\nconst rawPart   = r.participantes || r[\"Participantes\"] || \"\";\nconst rawDesc   = r.descripcion || r[\"Descripción\"] || \"\";\n\n// -------- Sanitización --------\nconst nombre = sanitizeNombre(rawNombre);\nconst correo = sanitizeText(rawCorreo);\nconst area   = sanitizeText(rawArea);\nconst descripcion = sanitizeText(rawDesc);\n\n// -------- Validaciones --------\n\n// Email\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nif (!correo || !emailRegex.test(correo)) errores.push(\"EMAIL INVÁLIDO\");\n\n// Fecha (robusta, sin UTC shift)\nconst fechaObj = parseFecha(rawFecha);\nif (!fechaObj) errores.push(\"FECHA INVÁLIDA\");\n\n// Horas\nconst inicioStr = parseHora(rawInicio);\nconst finStr    = parseHora(rawFin);\n\nif (!inicioStr) errores.push(\"HORA INICIO INVÁLIDA\");\nif (!finStr)    errores.push(\"HORA TÉRMINO INVÁLIDA\");\n\n// ISO fechas + fechaYMD\nlet startIso = null;\nlet endIso = null;\nlet fechaYMD = null;\n\nif (fechaObj && inicioStr && finStr) {\n  const yyyy = fechaObj.getFullYear();\n  const mm = String(fechaObj.getMonth() + 1).padStart(2, \"0\");\n  const dd = String(fechaObj.getDate()).padStart(2, \"0\");\n\n  // Fecha para guardar explícitamente\n  fechaYMD = `${yyyy}-${mm}-${dd}`;\n\n  startIso = `${fechaYMD}T${inicioStr}:00${TZ_OFFSET}`;\n  endIso   = `${fechaYMD}T${finStr}:00${TZ_OFFSET}`;\n\n  const startMs = Date.parse(startIso);\n  const endMs   = Date.parse(endIso);\n\n  if (endMs <= startMs) {\n    errores.push(\"RANGO HORARIO INVÁLIDO (FIN <= INICIO)\");\n  } else {\n    const durMin = (endMs - startMs) / 60000;\n\n    if (durMin < DURACION_MIN_MIN) {\n      errores.push(`DURACIÓN MÍNIMA ${DURACION_MIN_MIN} MIN`);\n    }\n\n    if (durMin > DURACION_MAX_MIN) {\n      errores.push(`DURACIÓN MÁXIMA ${DURACION_MAX_MIN} MIN`);\n    }\n  }\n}\n\n// Participantes\nconst participantes = Number(rawPart);\nif (isNaN(participantes) || participantes <= 0) {\n  errores.push(\"NÚMERO DE PARTICIPANTES INVÁLIDO\");\n}\n\n// -------- Reserva --------\nconst ReservaID = `RES-${Date.now().toString(36).toUpperCase()}-${Math.floor(Math.random() * 1000)}`;\n\nconst summary = `Reserva sala (${ReservaID}) - ${nombre}`;\nconst description =\n  `ReservaID: ${ReservaID}\\n` +\n  `Fecha: ${fechaYMD || \"(sin fecha)\"}\\n` +\n  `Área: ${area}\\n` +\n  (descripcion ? `Motivo: ${descripcion}\\n` : \"\") +\n  `Participantes: ${participantes}\\n` +\n  `Solicitante: ${correo}`;\n\nconst isValid = errores.length === 0;\n\nreturn [{\n  json: {\n    // Campos clave\n    fechaYMD,          // <-- ahora SIEMPRE la puedes guardar\n    fechaRaw: rawFecha,\n\n    startIso,\n    endIso,\n    summary,\n    description,\n    ReservaID,\n\n    requesterEmail: correo,\n    participantes,\n    nombre,\n    correo,\n    area,\n    inicioStr,\n    finStr,\n\n    extendedProperties: {\n      private: { ReservaID, requesterEmail: correo, fechaYMD },\n    },\n\n    isValid,\n    errores,\n  }\n}];\n"
+        "jsCode": "// ===============================\n// n8n Code node (Webhook-ready)\n// - Lee datos desde $json.body / $json.query / $json\n// - Sanitiza + valida\n// - Valida duración mínima y máxima\n// - NO permite agendar en el pasado (TZ -03:00)\n// - Genera startIso/endIso (con -03:00)\n// - Genera fechaYMD (para guardar fecha sí o sí)\n// - Genera ReservaID\n// ===============================\n\n// -------- CONFIGURACIÓN --------\nconst DURACION_MIN_MIN = 30;   // 30 minutos\nconst DURACION_MAX_MIN = 120;  // 2 horas\nconst TZ_OFFSET = \"-03:00\";\n// --------------------------------\n\n// --- Helpers de sanitización ---\nfunction sanitizeText(str = \"\") {\n  if (!str) return \"\";\n  str = String(str).replace(/<[^>]*>/g, \"\");\n  return str.replace(/\\s+/g, \" \").trim();\n}\n\nfunction sanitizeNombre(str = \"\") {\n  if (!str) return \"\";\n  str = String(str).replace(/<[^>]*>/g, \"\");\n  str = str.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s]/g, \"\");\n  return str.replace(/\\s+/g, \" \").trim();\n}\n\n// Fecha: DD/MM/YYYY | DD-MM-YYYY | YYYY-MM-DD | Excel\n// Importante: YYYY-MM-DD se parsea manual para evitar corrimiento por UTC\nfunction parseFecha(fechaRaw) {\n  if (!fechaRaw) return null;\n\n  // Excel serial number\n  if (typeof fechaRaw === \"number\") {\n    const epoch = (fechaRaw - 25569) * 86400 * 1000;\n    const d = new Date(epoch);\n    // Normaliza a \"solo fecha\" local\n    return new Date(d.getFullYear(), d.getMonth(), d.getDate());\n  }\n\n  const s = String(fechaRaw).trim();\n\n  // YYYY-MM-DD (solo fecha) -> crear en local (NO UTC)\n  let m = s.match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);\n  if (m) {\n    const [, yyyy, mm, dd] = m;\n    const d = new Date(Number(yyyy), Number(mm) - 1, Number(dd));\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // DD/MM/YYYY o DD-MM-YYYY\n  m = s.match(/^(\\d{1,2})[\\/-](\\d{1,2})[\\/-](\\d{4})$/);\n  if (m) {\n    const [, dd, mm, yyyy] = m;\n    const d = new Date(Number(yyyy), Number(mm) - 1, Number(dd));\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // Fallback: si viene con hora (ej: 2025-12-13 10:00)\n  const d = new Date(s);\n  return isNaN(d.getTime()) ? null : d;\n}\n\n// Hora: 08:30 | 10:40 a.m. | 14:20\nfunction parseHora(raw) {\n  if (!raw) return \"\";\n  let s = String(raw).toLowerCase().trim();\n\n  const m = s.match(/^(\\d{1,2}):(\\d{2})(?::\\d{2})?\\s*(a\\.m\\.|p\\.m\\.)?$/);\n  if (!m) return \"\";\n\n  let h = Number(m[1]);\n  const min = m[2];\n  const suf = m[3];\n\n  if (suf) {\n    if (suf.includes(\"p\") && h < 12) h += 12;\n    if (suf.includes(\"a\") && h === 12) h = 0;\n  }\n\n  return `${String(h).padStart(2, \"0\")}:${min}`;\n}\n\n// ===============================\n// Inicio lógica principal\n// ===============================\n\n// Webhook body / query / root\nconst root = $json;\nconst r =\n  (root.body && typeof root.body === \"object\") ? root.body :\n  (root.query && typeof root.query === \"object\") ? root.query :\n  root;\n\nconst errores = [];\n\n// -------- Lectura de campos --------\nconst rawNombre = r.nombre || r[\"Nombre\"] || \"\";\nconst rawCorreo = r.email || r[\"Correo\"] || r[\"Correo electrónico\"] || \"\";\nconst rawArea   = r.area || r[\"Área\"] || r[\"Area\"] || \"\";\nconst rawFecha  = r.fecha || r[\"Fecha\"] || \"\";\nconst rawInicio = r.horaInicio || r[\"Hora inicio\"] || \"\";\nconst rawFin    = r.horaTermino || r[\"Hora fin\"] || \"\";\nconst rawPart   = r.participantes || r[\"Participantes\"] || \"\";\nconst rawDesc   = r.descripcion || r[\"Descripción\"] || \"\";\n\n// -------- Sanitización --------\nconst nombre = sanitizeNombre(rawNombre);\nconst correo = sanitizeText(rawCorreo);\nconst area   = sanitizeText(rawArea);\nconst descripcion = sanitizeText(rawDesc);\n\n// -------- Validaciones --------\n\n// Email\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nif (!correo || !emailRegex.test(correo)) errores.push(\"EMAIL INVÁLIDO\");\n\n// Fecha (robusta, sin UTC shift)\nconst fechaObj = parseFecha(rawFecha);\nif (!fechaObj) errores.push(\"FECHA INVÁLIDA\");\n\n// Horas\nconst inicioStr = parseHora(rawInicio);\nconst finStr    = parseHora(rawFin);\n\nif (!inicioStr) errores.push(\"HORA INICIO INVÁLIDA\");\nif (!finStr)    errores.push(\"HORA TÉRMINO INVÁLIDA\");\n\n// ISO fechas + fechaYMD\nlet startIso = null;\nlet endIso = null;\nlet fechaYMD = null;\n\nif (fechaObj && inicioStr && finStr) {\n  const yyyy = fechaObj.getFullYear();\n  const mm = String(fechaObj.getMonth() + 1).padStart(2, \"0\");\n  const dd = String(fechaObj.getDate()).padStart(2, \"0\");\n\n  // Fecha para guardar explícitamente\n  fechaYMD = `${yyyy}-${mm}-${dd}`;\n\n  startIso = `${fechaYMD}T${inicioStr}:00${TZ_OFFSET}`;\n  endIso   = `${fechaYMD}T${finStr}:00${TZ_OFFSET}`;\n\n  const startMs = Date.parse(startIso);\n  const endMs   = Date.parse(endIso);\n\n  // ---- NO permitir agendar en el pasado (comparación con TZ_OFFSET) ----\n  const nowIso = new Date().toISOString().slice(0, 19) + TZ_OFFSET; // \"YYYY-MM-DDTHH:mm:ss-03:00\"\n  const nowMs = Date.parse(nowIso);\n\n  if (startMs < nowMs) {\n    errores.push(\"NO SE PUEDE AGENDAR EN EL PASADO\");\n  }\n\n  if (endMs <= startMs) {\n    errores.push(\"RANGO HORARIO INVÁLIDO (FIN <= INICIO)\");\n  } else {\n    const durMin = (endMs - startMs) / 60000;\n\n    if (durMin < DURACION_MIN_MIN) {\n      errores.push(`DURACIÓN MÍNIMA ${DURACION_MIN_MIN} MIN`);\n    }\n\n    if (durMin > DURACION_MAX_MIN) {\n      errores.push(`DURACIÓN MÁXIMA ${DURACION_MAX_MIN} MIN`);\n    }\n  }\n}\n\n// Participantes\nconst participantes = Number(rawPart);\nif (isNaN(participantes) || participantes <= 0) {\n  errores.push(\"NÚMERO DE PARTICIPANTES INVÁLIDO\");\n}\n\n// -------- Reserva --------\nconst ReservaID = `RES-${Date.now().toString(36).toUpperCase()}-${Math.floor(Math.random() * 1000)}`;\n\nconst summary = `Reserva sala (${ReservaID}) - ${nombre}`;\nconst description =\n  `ReservaID: ${ReservaID}\\n` +\n  `Fecha: ${fechaYMD || \"(sin fecha)\"}\\n` +\n  `Área: ${area}\\n` +\n  (descripcion ? `Motivo: ${descripcion}\\n` : \"\") +\n  `Participantes: ${participantes}\\n` +\n  `Solicitante: ${correo}`;\n\nconst isValid = errores.length === 0;\n\nreturn [{\n  json: {\n    // Campos clave\n    fechaYMD,          // <-- ahora SIEMPRE la puedes guardar\n    fechaRaw: rawFecha,\n\n    startIso,\n    endIso,\n    summary,\n    description,\n    ReservaID,\n\n    requesterEmail: correo,\n    participantes,\n    nombre,\n    correo,\n    area,\n    inicioStr,\n    finStr,\n\n    extendedProperties: {\n      private: { ReservaID, requesterEmail: correo, fechaYMD },\n    },\n\n    isValid,\n    errores,\n  }\n}];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
         -1504,
-        432
+        592
       ],
       "id": "331f1bb5-bf44-47d8-ab0b-53f1d202281c",
       "name": "DatosCode sanitizado"
@@ -809,8 +808,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1296,
-        432
+        -1280,
+        592
       ],
       "id": "37132826-18bc-44fa-99a1-a4c7b2cf145c",
       "name": "Datos Validos"
@@ -874,8 +873,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1072,
-        272
+        -1056,
+        448
       ],
       "id": "56cbe14e-6773-4332-ac17-b56f341251ba",
       "name": "SET_META"
@@ -962,8 +961,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -1120,
-        640
+        -1056,
+        736
       ],
       "id": "0675538e-7111-426f-b527-e09503bb548c",
       "name": "Log Intento Formulario",
@@ -1002,8 +1001,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -912,
-        640
+        -832,
+        736
       ],
       "id": "bae58ad8-8503-4403-a741-56b3843971d9",
       "name": "IF Tiene Correo"
@@ -1018,8 +1017,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        -672,
-        624
+        -608,
+        736
       ],
       "id": "0fbd531a-54c1-46b7-af59-4a3291ca5caf",
       "name": "Send a message2",
@@ -1039,8 +1038,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1520,
-        272
+        -1712,
+        448
       ],
       "typeVersion": 1,
       "id": "90044ad6-2cee-44bf-be83-8d2751dc2a21",
@@ -1106,7 +1105,7 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "ID_Sala": "={{ $('HTML').item.json.reservationId }}",
+            "ID_Sala": "={{ $('HTML').item.json.ReservID }}",
             "Estado": "En espera de respuesta"
           },
           "matchingColumns": [
@@ -1242,8 +1241,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1328,
-        96
+        1632,
+        64
       ],
       "id": "4ebb2695-f3c3-4471-a365-5d9d033ec190",
       "name": "Update row in sheet1",
@@ -1264,11 +1263,48 @@
       "typeVersion": 2.1,
       "position": [
         -1728,
-        432
+        592
       ],
       "id": "7a071bb6-1c76-4054-9c93-bd1cce08ed68",
       "name": "Webhook",
       "webhookId": "a170b548-480d-463f-a7fd-d439cbd6c395"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener los datos del nodo anterior (el IF)\nconst item = $json; // Usamos $json para más seguridad\n// Generar el HTML\nconst htmlCorreo = `\n<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Confirmación de Reserva de Sala</title>\n    <style>\n        body {\n            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n            line-height: 1.6;\n            color: #333;\n            background-color: #f4f4f4;\n            margin: 0;\n            padding: 0;\n        }\n        .container {\n            width: 100%;\n            max-width: 600px;\n            margin: 20px auto;\n            background: #ffffff;\n            border-radius: 8px;\n            overflow: hidden;\n            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);\n        }\n        .header {\n            background-color: #007bff; /* Azul vibrante */\n            color: #ffffff;\n            padding: 25px 30px;\n            text-align: center;\n        }\n        .header img {\n            max-width: 80px;\n            margin-bottom: 10px;\n            border-radius: 5px;\n        }\n        .header h1 {\n            margin: 0;\n            font-size: 28px;\n            font-weight: 600;\n        }\n        .content {\n            padding: 30px;\n            color: #555;\n        }\n        .content h2 {\n            color: #007bff;\n            font-size: 22px;\n            margin-top: 0;\n            border-bottom: 2px solid #e9ecef;\n            padding-bottom: 10px;\n            margin-bottom: 20px;\n        }\n        .info-table {\n            width: 100%;\n            border-collapse: collapse;\n            margin-bottom: 25px;\n        }\n        .info-table th, .info-table td {\n            padding: 12px 15px;\n            text-align: left;\n            border-bottom: 1px solid #e9ecef;\n        }\n        .info-table th {\n            background-color: #f8f9fa;\n            width: 35%;\n            font-weight: 600;\n            color: #444;\n        }\n        .info-table td {\n            background-color: #ffffff;\n            width: 65%;\n        }\n        .footer {\n            background-color: #e9ecef;\n            color: #999; /* Color de texto más suave */\n            text-align: center;\n            padding: 20px 30px;\n            font-size: 13px; /* Texto más pequeño */\n            border-top: 1px solid #dee2e6;\n        }\n        .footer p {\n            margin: 0;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>Reserva de Sala Confirmada</h1>\n        </div>\n        <div class=\"content\">\n            <p>Estimado Encargado,</p>\n            <p>Se ha confirmado una nueva reserva para una de nuestras salas. Por favor, asegúrese de que todo esté preparado según los detalles a continuación:</p>\n            \n            <h2>Detalles de la Reserva</h2>\n            <table class=\"info-table\">\n                <tr>\n                    <th>ID de Reserva:</th>\n                    <td><strong>${item.ReservaID || 'N/A'}</strong></td>\n                </tr>\n                <tr>\n                    <th>Sala Asignada:</th>\n                    <td><strong>${item[\"room\"] || 'N/A'}</strong></td>\n                </tr>\n                <tr>\n                    <th>Fecha:</th>\n                    <td>${item.fechaRaw || 'N/A'}</td>\n                </tr>\n                <tr>\n                    <th>Horario:</th>\n                    <td>${item.inicioStr || 'N/A'} - ${item.finStr || 'N/A'}</td>\n                </tr>\n                <tr>\n                    <th>N° Participantes:</th>\n                    <td>${item[\"participantes\"] || 'N/A'}</td>\n                </tr>\n            </table>\n\n            <h2>Información del Solicitante</h2>\n            <table class=\"info-table\">\n                <tr>\n                    <th>Nombre:</th>\n                    <td>${item.nombre || 'N/A'}</td>\n                </tr>\n                <tr>\n                    <th>Correo:</th>\n                    <td>${item.correo || 'N/A'}</td>\n                </tr>\n                <tr>\n                    <th>Área/Departamento:</th>\n                    <td>${item.[\"area\"] || 'N/A'}</td>\n                </tr>\n            </table>\n            <p>Agradecemos su gestión para garantizar un excelente servicio.</p>\n        </div>\n        <div class=\"footer\">\n            <p>© ${new Date().getFullYear()} - Gestión Interna de Salas</p>\n        </div>\n    </div>\n</body>\n</html>\n`;\n\n// Devolver el HTML generado en una nueva propiedad llamada \"htmlCorreo\"\n// También mantenemos todos los datos originales\nreturn {\n  json: {\n    ...item,\n    htmlCorreo: htmlCorreo\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1632,
+        352
+      ],
+      "id": "51e91a5e-59a1-409b-85fc-b90407724219",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "sendTo": "encargadosalas131@gmail.com",
+        "subject": "=Confirmacion de reserva ✅ :  {{ $json[\"Sala asignada\"] }}  -  {{ $json.Fecha }}",
+        "message": "={{ $json.htmlCorreo }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1856,
+        352
+      ],
+      "id": "c14d6ae4-d814-400f-98b6-3a079fb56292",
+      "name": "Correo Encargado",
+      "webhookId": "eb343202-17bd-484d-8059-8729b82b5ac1",
+      "executeOnce": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "CzEurpQmfPkOWWzL",
+          "name": "Gmail account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1401,6 +1437,11 @@
         [
           {
             "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code in JavaScript2",
             "type": "main",
             "index": 0
           }
@@ -1621,13 +1662,24 @@
           }
         ]
       ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Correo Encargado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "6bc03665-c459-4a8e-9a17-c73af683b49b",
+  "versionId": "57f81879-1812-4e8a-8227-589235a7936b",
   "meta": {
     "instanceId": "49917c8c6b8ffea2c96652a81fbef2ef2cff23a6be45110ebde2253ccd3b891a"
   },
