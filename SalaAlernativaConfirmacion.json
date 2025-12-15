@@ -1,0 +1,665 @@
+{
+  "name": "SalaAlernativaConfirmacion",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// ===================== NORMALIZAR + SANITIZAR DATOS =====================\n// Compatible con Webhook + HTML Alternativas + Merge directo\n// Formato: hora 24h, fecha DD/MM/YYYY\n\nconst TZ = 'America/Santiago';\nconst q = $json;\n\n// Detecta si vienen dentro de \"query\" (Webhook)\nconst src = q.query ? q.query : q;\n\n// ---------- Helpers ----------\n\n// Convierte cualquier valor a ISO (si puede)\nfunction toISO(val) {\n  if (!val) return '';\n  const d = new Date(val);\n  return isNaN(d) ? String(val) : d.toISOString();\n}\n\n// Convierte un datetime a partes locales (fecha y hora)\nfunction toLocalParts(dtStr) {\n  if (!dtStr) return { fecha: '', hora: '' };\n  const d = new Date(dtStr);\n  if (isNaN(d)) return { fecha: '', hora: '' };\n\n  // Fecha en formato DD/MM/YYYY\n  const dia  = String(d.getDate()).padStart(2, '0');\n  const mes  = String(d.getMonth() + 1).padStart(2, '0');\n  const anio = d.getFullYear();\n  const fecha = `${dia}/${mes}/${anio}`;\n\n  // Hora en formato 24h (HH:mm)\n  const hora = d.toLocaleTimeString('es-CL', {\n    timeZone: TZ,\n    hour: '2-digit',\n    minute: '2-digit',\n    hour12: false,       // <- evita AM/PM\n  });\n\n  return { fecha, hora };\n}\n\n// Sanitizador básico de texto: elimina tags HTML y espacios raros\nfunction sanitizeText(value) {\n  if (value == null) return '';\n  let s = String(value);\n\n  // elimina cualquier etiqueta <...>\n  s = s.replace(/<[^>]*>/g, '');\n\n  // normaliza espacios\n  s = s.replace(/\\s+/g, ' ').trim();\n\n  return s;\n}\n\n// Sanitizador simple para email (solo trim, no tocamos @ ni dominio)\nfunction sanitizeEmail(value) {\n  if (!value) return '';\n  return String(value).trim();\n}\n\n// ---------- Calcular fechas legibles ----------\n\nconst startIso = toISO(src.start);\nconst endIso   = toISO(src.end);\n\nconst { fecha: fechaLarga, hora: inicioStr } = toLocalParts(startIso);\nconst { hora: finStr } = toLocalParts(endIso);\n\n// ---------- Normalizar + SANITIZAR campos del webhook ----------\n\n// Identificadores y correo\nconst reservaId = src.reservaId\n  || src.ReservID\n  || src.ReservaID\n  || src.reservationId\n  || 'SIN-ID';\n\nconst email = sanitizeEmail(\n  src.email\n  || src.correo\n  || src.to\n  || 'sin-correo@demo.local'\n);\n\n// Datos del solicitante\nconst nombre        = sanitizeText(src.nombre || src.solicitante || '');\nconst area          = sanitizeText(src.area || '');\nconst participantes = Number(src.participantes || 0);\nconst descripcion   = sanitizeText(src.descripcion || '');\n\n// Información del evento\nconst summary    = sanitizeText(src.summary || 'Reunión');\nconst calendarId = src.calendarId || '';\nconst roomName   = sanitizeText(src.room || '');\n\n// ---------- Resultado unificado ----------\n\nreturn [{\n  json: {\n    // --- Identificadores y correo ---\n    reservaId,\n    email,\n\n    // --- Datos del solicitante ---\n    nombre,\n    area,\n    participantes,\n    descripcion,\n\n    // --- Información de evento ---\n    summary,\n    calendarId,\n    roomName,\n\n    // --- Fechas ISO y texto ---\n    startIso,\n    endIso,\n    fechaLarga,  // DD/MM/YYYY\n    inicioStr,   // HH:mm\n    finStr       // HH:mm\n  }\n}];\n"
+      },
+      "id": "c1182fcf-1e61-49a8-ae0e-b029e9d0bcab",
+      "name": "Normalizar Datos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -352,
+        256
+      ]
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "={{$json[\"calendarId\"]}}",
+          "mode": "id"
+        },
+        "start": "={{$json[\"startIso\"]}}",
+        "end": "={{$json[\"endIso\"]}}",
+        "additionalFields": {
+          "description": "=ID de la reserva: [{{ $json.reservaId }}]   Su sala fue confirmada exitosamente. ¿Cuando? {{ $json.fechaLarga }} de {{ $json.inicioStr }} a {{ $json.finStr }} ¿Donde? {{ $json.roomName }}  Capacidad total: {{ $json.participantes }}  ID de la reserva: [{{ $json.reservaId }}]",
+          "summary": "={{ $json.summary }}: {{ $json.nombre }} || {{ $json.roomName }} || Reservada"
+        }
+      },
+      "id": "d5bf1a13-2587-4e58-8026-6c335b1d0029",
+      "name": "Crear Evento Google Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "QuZ1ePjie0fw43sd",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1n66HEZRlQ2SeqWs0UVmgNoBYkN7gZvjlFvJYdpwwDlw",
+          "mode": "list",
+          "cachedResultName": "Registro Solicitud",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1n66HEZRlQ2SeqWs0UVmgNoBYkN7gZvjlFvJYdpwwDlw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1534669159,
+          "mode": "list",
+          "cachedResultName": "Registro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1n66HEZRlQ2SeqWs0UVmgNoBYkN7gZvjlFvJYdpwwDlw/edit#gid=1534669159"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Sala asignada": "=Sala {{ $json[\"Sala asignada\"] }}",
+            "Estado": "=Confirmada",
+            "row_number": 0,
+            "horaInicio": "={{ $json.horaInicio }}",
+            "horaTermino": "={{ $json.horaTermino }}",
+            "Fecha": "={{ $json.Fecha }}",
+            "Correo": "={{ $json.Correo }}",
+            "Nombre": "={{ $json.Nombre }}",
+            "N° Participantes": "={{ $json[\"N° Participantes\"] }}",
+            "ID_Reserva": "={{ $json.ID_Reserva }}",
+            "ID_Sala": "={{ $json.ID_Sala }}",
+            "Event_ID": "={{ $json.Event_ID }}",
+            "Area": "={{ $json.Area }}"
+          },
+          "matchingColumns": [
+            "ID_Reserva"
+          ],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Correo",
+              "displayName": "Correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Area",
+              "displayName": "Area",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "horaInicio",
+              "displayName": "horaInicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "horaTermino",
+              "displayName": "horaTermino",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "N° Participantes",
+              "displayName": "N° Participantes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sala asignada",
+              "displayName": "Sala asignada",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID_Sala",
+              "displayName": "ID_Sala",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Event_ID",
+              "displayName": "Event_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_Reserva",
+              "displayName": "ID_Reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "64316c31-b8ef-476a-852e-46e8b2762cd7",
+      "name": "Actualizar Hoja Registro",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1280,
+        32
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "QdjWu2JVvnK9j1u1",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Correo }}",
+        "subject": "=✅ Reserva Confirmada: {{ $json[\"Sala asignada\"] }}",
+        "message": "==<!doctype html>\n<html lang=\"es\">\n<head>\n<meta charset=\"utf-8\">\n<title>Reserva Confirmada</title>\n\n<style>\n  body {\n    background-color: #F9F6EE;\n    font-family: 'Segoe UI', Roboto, Arial, sans-serif;\n    margin: 0;\n    padding: 60px 16px;\n    color: #111;\n  }\n  .card {\n    max-width: 600px;\n    margin: 0 auto;\n    background: #ffffff;\n    border-radius: 18px;\n    box-shadow: 0 4px 20px rgba(0,0,0,0.15);\n    overflow: hidden;\n  }\n  .header {\n    background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);\n    color: #ffffff;\n    padding: 24px;\n    text-align: center;\n  }\n  .header h2 {\n    margin: 0;\n    font-size: 22px;\n    font-weight: 700;\n  }\n  .header small {\n    display: block;\n    margin-top: 6px;\n    color: #e6ffe9;\n    font-size: 14px;\n    font-weight: 500;\n  }\n  .content {\n    padding: 30px;\n  }\n  .content p {\n    font-size: 16px;\n    color: #333;\n    text-align: center;\n    margin-bottom: 25px;\n  }\n  table {\n    width: 100%;\n    border-collapse: collapse;\n    margin-bottom: 25px;\n  }\n  td {\n    padding: 10px 0;\n    font-size: 15px;\n  }\n  td:first-child {\n    font-weight: bold;\n    color: #14532d;\n    width: 35%;\n  }\n  tr:nth-child(even) td {\n    background: #f3faf5;\n  }\n  .footer {\n    font-size: 13px;\n    color: #666;\n    text-align: center;\n    padding: 20px 30px 30px;\n    border-top: 1px solid #eee;\n    background: #fff;\n  }\n  .btn-cancel {\n    display: inline-block;\n    padding: 12px 20px;\n    background: #e53935;\n    color: #ffffff !important;\n    text-decoration: none;\n    border-radius: 6px;\n    font-weight: 700;\n    font-size: 14px;\n  }\n</style>\n\n</head>\n<body>\n  <div class=\"card\">\n    <div class=\"header\">\n      <h2>✅ Reserva Confirmada</h2>\n      <small>Tu solicitud fue procesada con éxito</small>\n    </div>\n\n    <div class=\"content\">\n      <p>\n        ¡Tu reserva ha sido <b>confirmada correctamente</b>!<br>\n        A continuación se muestran los detalles:\n      </p>\n\n      <table>\n        <tr>\n          <td>Sala:</td>\n          <td>{{ $json[\"Sala asignada\"] }}</td>\n        </tr>\n        <tr>\n          <td>Fecha:</td>\n          <td>{{ $json.Fecha }}</td>\n        </tr>\n        <tr>\n          <td>Horario:</td>\n          <td>{{ $json.horaInicio }} – {{ $json.horaTermino }}</td>\n        </tr>\n        <tr>\n          <td>Participantes:</td>\n          <td>{{ $json[\"N° Participantes\"] }}</td>\n        </tr>\n        <tr>\n          <td>Solicitante:</td>\n          <td>{{ $json.Nombre }} ({{ $json.Correo }})</td>\n        </tr>\n        <tr>\n          <td>ID Reserva:</td>\n          <td>{{ $json[\"ID_Reserva\"] }}</td>\n        </tr>\n      </table>\n\n      <!-- BOTÓN CANCELAR RESERVA -->\n      <p style=\"text-align:center; margin-bottom: 10px;\">\n        Si necesitas cancelar esta reserva, puedes hacerlo aquí:\n      </p>\n\n      <p style=\"text-align:center; margin-bottom: 20px;\">\n        <a class=\"btn-cancel\"\n   href=\"http://localhost:5678/webhook-test/cancelar-reserva?accion=cancelar&reservationId={{ $json['ID_Reserva'] }}&eventId={{ $json['Event_ID'] }}&calendarId={{ $json['ID_Sala'] }}&email={{ $json['Correo'] }}&room={{ $json['Sala asignada'] }}&fecha={{ $json.Fecha }}&inicio={{ $json.horaInicio }}&fin={{ $json.horaTermino }}\">\n    ❌ Cancelar reserva\n        </a>\n      </p>\n\n    </div>\n\n    <div class=\"footer\">\n      Gracias por utilizar el <b>sistema automatizado de reservas</b>.<br>\n      © {{ new Date().getFullYear() }} — Equipo de Gestión de Salas\n    </div>\n  </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "ce0b3c22-1b34-4d37-aee5-10738d6309ad",
+      "name": "Enviar Correo Confirmación",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1520,
+        32
+      ],
+      "webhookId": "716eeaa9-19af-4576-b90e-a7fbdcd9c05e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "CzEurpQmfPkOWWzL",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        448,
+        144
+      ],
+      "id": "4156d186-f7ca-439d-93d3-f897e02dd58b",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "path": "confirmar-reserva",
+        "options": {
+          "responseData": "=<!DOCTYPE html> <html lang=\"es\"> <head>   <meta charset=\"UTF-8\" />   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>   <title>Reserva Confirmada</title>   <style>     body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,#34d399 0%,#10b981 100%);display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:20px}     .container{background:#fff;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.2);padding:40px;max-width:520px;text-align:center;animation:slideUp .5s ease-out}     @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}     .icon{width:80px;height:80px;background:#10b981;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}     .icon svg{width:40px;height:40px;stroke:#fff;stroke-width:3}     h1{color:#064e3b;font-size:28px;margin:0 0 16px}     .message{color:#065f46;font-size:16px;line-height:1.6;margin-bottom:24px}     .details{background:#ecfdf5;border:1px solid #d1fae5;border-radius:8px;padding:20px;margin:24px 0;text-align:left}     .detail-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #d1fae5}     .detail-row:last-child{border-bottom:none}     .detail-label{color:#065f46;font-weight:600}     .detail-value{color:#064e3b;font-weight:500}     .note{color:#065f46;font-size:14px;background:#f0fdf4;padding:12px;border-radius:6px;margin:16px 0}     .btn{display:inline-block;background:#10b981;color:#fff;padding:12px 32px;border-radius:8px;text-decoration:none;font-weight:600;transition:background .25s;margin-top:16px}     .btn:hover{background:#059669}   </style> </head> <body>   <div class=\"container\">     <div class=\"icon\">       <svg viewBox=\"0 0 24 24\" fill=\"none\">         <path d=\"M5 13l4 4L19 7\" stroke=\"currentColor\"/>       </svg>     </div>      <h1>¡Reserva Confirmada!</h1>      <p class=\"message\">       Tu reserva ha sido <strong>confirmada exitosamente</strong>. La sala quedó       registrada y recibirás los detalles en tu correo.     </p>      <div class=\"details\">       <div class=\"detail-row\">         <span class=\"detail-label\">Estado:</span>         <span class=\"detail-value\">✅ Confirmada</span>       </div>       <div class=\"detail-row\">         <span class=\"detail-label\">Notificación:</span>         <span class=\"detail-value\">Correo enviado</span>       </div>     </div>      <p class=\"note\">📧 Hemos enviado un correo con la confirmación de tu reserva.</p>      <!-- Botón que vuelve al inicio -->     <a href=\"http://10.40.5.22/\" class=\"btn\">Volver al inicio</a>     <!-- o con nueva pestaña: <a href=\"http://10.40.5.22/\" class=\"btn\" target=\"_blank\" rel=\"noopener\">Volver al inicio</a> -->   </div> </body> </html>",
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "9835bc8d-6588-45ea-8327-1453af597a42",
+      "name": "Webhook Confirmar",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -576,
+        256
+      ],
+      "webhookId": "278ac48d-a3f2-4b11-8e41-218aa0cc73d4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "includeOtherFields": true,
+        "include": "selected",
+        "includeFields": "={{ $json.email }}{{ $json.reservaId }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        256
+      ],
+      "id": "4d1a9481-1550-4bca-b5be-f4a5db93b2e5",
+      "name": "Datos Originales"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1n66HEZRlQ2SeqWs0UVmgNoBYkN7gZvjlFvJYdpwwDlw",
+          "mode": "list",
+          "cachedResultName": "Registro Solicitud",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1n66HEZRlQ2SeqWs0UVmgNoBYkN7gZvjlFvJYdpwwDlw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1534669159,
+          "mode": "list",
+          "cachedResultName": "Registro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1n66HEZRlQ2SeqWs0UVmgNoBYkN7gZvjlFvJYdpwwDlw/edit#gid=1534669159"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "ID_Reserva",
+              "lookupValue": "={{ $json.reservaId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        48,
+        512
+      ],
+      "id": "9358ae2d-3b1d-4fff-86da-6cf0d66ab063",
+      "name": "Buscar Reserva",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "QdjWu2JVvnK9j1u1",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        464,
+        416
+      ],
+      "id": "61a3269b-d689-47ce-ad1a-34f375a6f22c",
+      "name": "Merge Datos + Reserva"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ================== VALIDAR RESERVA USUARIO ==================\n// Input 0: viene del Merge / evento (si lo estás usando)\n// Input 1: viene del Merge Datos + Reserva (fila Registro + normalizado)\n\n// Items que llegan por cada entrada\nconst eventos   = $input.all(0);   // puede venir vacío y no pasa nada\nconst registros = $input.all(1);   // aquí viene la fila de la hoja\n\nconst evento   = eventos[0]?.json || {};\nconst registro = registros[0]?.json || {};\n\n// Traemos la sala limpia desde \"Normalizar Datos\"\nconst datosLink = $node[\"Normalizar Datos\"].json || {};\n\n// Y el id de evento desde \"Crear Evento Google Calendar\"\nconst datosEvento = $node[\"Crear Evento Google Calendar\"].json || {};\n\nconst errores = [];\nlet isValid = true;\n\n// --- Regla simple: si no hay ID_Reserva en la hoja, algo está mal ---\nif (!registro.ID_Reserva) {\n  isValid = false;\n  errores.push('RESERVA NO ENCONTRADA EN LA HOJA REGISTRO');\n}\n\n// (Opcional) Aquí podrías validar correo, estado, etc. si quieres.\n// Por ahora dejamos sólo que exista la reserva.\n\n// --- Sala asignada ---\n// Siempre preferimos la sala del link (Normalizar Datos)\n// y NO la de la hoja, que trae \"Sala \" en blanco.\nconst salaAsignada =\n  datosLink.roomName              // ej: \"Sala 101\"\n  || registro[\"Sala asignada\"]    // por si acaso\n  || evento.roomName\n  || '';\n\n// --- Event_ID ---\n// Guardamos el id del evento de Calendar si existe\nconst eventId = datosEvento.id || registro.Event_ID || '';\n\n// Devolvemos todo unificado\nreturn [\n  {\n    json: {\n      // Datos del link / normalizados\n      ...datosLink,\n      // Datos de la hoja\n      ...registro,\n      // Datos del evento (por si los quieres usar después)\n      ...evento,\n\n      // Campos corregidos\n      \"Sala asignada\": salaAsignada,\n      Event_ID: eventId,\n\n      // Resultado de validación\n      isValid,\n      errores,\n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        768,
+        224
+      ],
+      "id": "bd834411-9260-4a56-9259-32226e11b1a6",
+      "name": "ValidarReservaUsuario"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9020dd6f-e89f-466b-8cb8-696edf587e46",
+              "leftValue": "={{ $json.isValid.toString() }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1024,
+        160
+      ],
+      "id": "5ceaa2b0-be14-44c3-952e-732a13cb55c0",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1n66HEZRlQ2SeqWs0UVmgNoBYkN7gZvjlFvJYdpwwDlw",
+          "mode": "list",
+          "cachedResultName": "Registro Solicitud",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1n66HEZRlQ2SeqWs0UVmgNoBYkN7gZvjlFvJYdpwwDlw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 319241814,
+          "mode": "list",
+          "cachedResultName": "Logs_Intentos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1n66HEZRlQ2SeqWs0UVmgNoBYkN7gZvjlFvJYdpwwDlw/edit#gid=319241814"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "FechaHora": "={{ $json.fechaLarga }}",
+            "Email": "={{ $json.email }}",
+            "ID_Reserva": "={{ $json.reservaId }}",
+            "Errores": "={{ Array.isArray($json.errores) ? $json.errores.join(' | ') : ($json.errores || '') }}\n",
+            "Origen": "ConfirmacionDeSala"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "FechaHora",
+              "displayName": "FechaHora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Origen",
+              "displayName": "Origen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID_Reserva",
+              "displayName": "ID_Reserva",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Errores",
+              "displayName": "Errores",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Payload",
+              "displayName": "Payload",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1232,
+        256
+      ],
+      "id": "fb4871d9-ceec-4509-8ee8-68471736f588",
+      "name": "Log Confirmación Fallida",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "QdjWu2JVvnK9j1u1",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Normalizar Datos": {
+      "main": [
+        [
+          {
+            "node": "Crear Evento Google Calendar",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Datos Originales",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Buscar Reserva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Evento Google Calendar": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Actualizar Hoja Registro": {
+      "main": [
+        [
+          {
+            "node": "Enviar Correo Confirmación",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "ValidarReservaUsuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Confirmar": {
+      "main": [
+        [
+          {
+            "node": "Normalizar Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos Originales": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Datos + Reserva",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Buscar Reserva": {
+      "main": [
+        [
+          {
+            "node": "Merge Datos + Reserva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Datos + Reserva": {
+      "main": [
+        [
+          {
+            "node": "ValidarReservaUsuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ValidarReservaUsuario": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Actualizar Hoja Registro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Confirmación Fallida",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "7a6494ef-8f84-4267-a0e7-a830c6525624",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "49917c8c6b8ffea2c96652a81fbef2ef2cff23a6be45110ebde2253ccd3b891a"
+  },
+  "id": "nCpfR3NIEJAsYcVl",
+  "tags": []
+}
