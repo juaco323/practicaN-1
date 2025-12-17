@@ -181,12 +181,23 @@ El sistema verifica automáticamente:
    - Google Sheets API
    - Gmail API
    - Google Calendar API
+4. Contar con FortiClient VPN instalado en tu máquina local
+5. Tener instalado Visual Studio Code
+6. Dentro de Visual Studio Code, instalar la extensión llamada "Remote-Ssh"
+
+## 📌 Conexión con el servidor
+1. Ingresa los datos solicitados dentro de FortiClient VPN
+2. Dentro de Visual Studio Code, en la extensión "Remote-Ssh", ingresa los datos para acceder al servidor
+3. Ya dentro del servidor, tienes completo acceso a los archivos dentro de este, en conjunto con su terminal.
 
 ### Variables de Entorno
+Acá se definen los bloques de variables de entorno para establecer sus respectivas credenciales y URI's de redireccionamiento.
 ```env
 GOOGLE_SHEETS_ID=tu_id_de_spreadsheet
 GMAIL_CREDENTIALS=credenciales_oauth
 N8N_WEBHOOK_URL=url_del_webhook
+environment:
+      NGROK_AUTHTOKEN: "tuNgrokAuthToken"
 ```
 
 ---
