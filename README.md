@@ -73,7 +73,7 @@ Reducir conflictos de agenda y mejorar la eficiencia en la gestión de espacios 
                         │                                │                                │
                         ▼                                ▼                                ▼
               ┌─────────────────┐            ┌─────────────────┐            ┌─────────────────┐
-              │  Sala Disponible│           │  Sala Ocupada   │             │ Datos Inválidos │
+              │  Sala Disponible│            │ Sala Ocupada    │            │ Datos Inválidos │
               └────────┬────────┘            └────────┬────────┘            └────────┬────────┘
                        │                              │                              │
                        ▼                              ▼                              ▼
@@ -89,35 +89,6 @@ Reducir conflictos de agenda y mejorar la eficiencia en la gestión de espacios 
    │  Sheets    │ │   (correo) │ │  Encargado │
    └────────────┘ └────────────┘ └────────────┘
 ```
-
----
-
-## 📁 Estructura del Proyecto
-
-```
-practicaN-1/
-│
-├── 📄 README.md                          # Documentación del proyecto
-├── 📄 Guia-Comandos-Git.md               # Guía de comandos Git
-│
-├── 📂 Formulario-html/                   # Formulario de reservas
-│   └── index.html
-│
-├── 📂 Server/                            # Configuración del servidor y archivos alojados en este
-│
-├── 📂 Pagina-web/                        # Página web del sistema
-│
-├── 📂 Cancelacion-reserva/               # Lógica de cancelación
-│
-├── 📂 Confirmacion-reserva-encargado/    # Confirmación para encargados
-│
-├── 📂 Notificacion-de-cancelacion/       # Sistema de notificaciones
-│
-├── 📂 Resumen-de-reservas-al-encargado/  # Resúmenes automáticos
-│
-└── 📂 Sanitizacion-y-seguridad/          # Validación y seguridad
-```
-
 ---
 
 ## 📝 Datos Capturados en el Formulario
@@ -196,8 +167,7 @@ Acá se definen los bloques de variables de entorno para establecer sus respecti
 GOOGLE_SHEETS_ID=tu_id_de_spreadsheet
 GMAIL_CREDENTIALS=credenciales_oauth
 N8N_WEBHOOK_URL=url_del_webhook
-environment:
-      NGROK_AUTHTOKEN: "tuNgrokAuthToken"
+NGROK_AUTHTOKEN: "tuNgrokAuthToken"
 ```
 
 ---
